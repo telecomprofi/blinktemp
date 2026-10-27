@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Blink Temp</string>
+    <string name="widget_description">Average temperature from your Blink cameras</string>
+    <string name="average_label">Average temperature</string>
+    <string name="use_celsius">Show °C (off = °F)</string>
+    <string name="skip_offline">Ignore offline cameras in the average</string>
+    <string name="sign_in">Sign in to Blink</string>
+    <string name="sign_out">Sign out</string>
+    <string name="refresh">Refresh</string>
+    <string name="refreshing">Refreshing…</string>
+    <string name="not_signed_in">Not signed in</string>
+    <string name="tap_refresh_hint">Tap Refresh to load cameras</string>
+    <string name="updated_at">Updated %1$s</string>
+
+    <string name="minmax_24h">Past 24 h:  ↓ %1$s at %2$s  ·  ↑ %3$s at %4$s</string>
+    <string name="minmax_24h_none">Past 24 h: no readings yet</string>
+    <string name="widget_minmax">↓ %1$s  ↑ %2$s</string>
+    <string name="history_header">History</string>
+    <string name="range_day">Past 24 h</string>
+    <string name="range_week">Past 7 days</string>
+    <string name="history_switch">Keep 7-day temperature history</string>
+    <string name="history_clear">Clear history</string>
+    <string name="history_clear_confirm">Delete all saved temperature readings?</string>
+    <string name="history_off">History is off.</string>
+    <string name="chart_empty">No readings yet – one is saved every refresh (~30 min)</string>
+    <string name="chart_summary">Min %1$s · Max %2$s · Mean %3$s</string>
+    <string name="temp_header">Temperature refresh</string>
+    <string name="temp_hint">Battery cameras only send a new temperature when they wake up. This wakes the cameras ticked "Temp refresh" on a schedule so the graph gets real readings. Each wake uses a little battery.</string>
+    <string name="temp_photo">Wake with a photo (more reliable, more battery)</string>
+    <string name="temp_now">Refresh temperatures now</string>
+    <string name="temp_never">No temperature refresh yet</string>
+    <string name="temp_requested">Waking cameras… new readings in about a minute.</string>
+    <string name="cameras_header">Cameras</string>
+    <string name="cameras_hint">Average = counts toward the average · Alert = freeze alert · Snapshot = scheduled image refresh · Temp refresh = woken regularly for a fresh reading</string>
+    <string name="use_in_average">Average</string>
+    <string name="image_refresh">Snapshot</string>
+    <string name="freeze_alert_short">Alert</string>
+    <string name="temp_refresh_short">Temp refresh</string>
+    <string name="online">online</string>
+    <string name="offline">OFFLINE</string>
+    <string name="battery_low">battery low</string>
+    <string name="no_temp_sensor">no temperature sensor</string>
+    <string name="spike_ignored">⚠ ignored implausible reading %1$s</string>
+    <string name="ignored_offline">ignored (offline)</string>
+
+    <string name="snap_header">Scheduled image refresh</string>
+    <string name="snap_hint">Takes a new thumbnail on the selected cameras. This also wakes battery cameras so their temperature updates, but each refresh uses some battery.</string>
+    <string name="only_between">Only between these hours</string>
+    <string name="snap_now">Refresh images now</string>
+    <string name="snap_requested">Requesting images… results appear here in about a minute.</string>
+    <string name="snap_never">No image refresh yet</string>
+    <string name="every_minutes">Every %d minutes</string>
+    <string name="every_hour">Every hour</string>
+    <string name="every_hours">Every %d hours</string>
+    <string name="once_a_day">Once a day</string>
+
+    <string name="widget_small_name">Blink Temp 1×1</string>
+    <string name="sign_in_short">sign in</string>
+    <string name="alert_header">Freeze alert</string>
+    <string name="alert_switch">Notify when any camera drops below</string>
+    <string name="alert_hint">Each camera ticked "Alert" above is checked on every refresh (every 30 min, and after image refreshes). Offline cameras are skipped. One notification per camera per drop; it clears when that camera is back 1 °C above the limit.</string>
+    <string name="alert_test">Send test notification</string>
+    <string name="alert_channel">Freeze alerts</string>
+    <string name="alert_title">❄ Below %1$s</string>
+    <string name="alert_test_label">Test</string>
+    <string name="alert_permission_denied">Notifications are blocked. Allow them in Settings → Apps → Blink Temp → Notifications.</string>
+    <string name="tap_to_sign_in">Tap to sign in</string>
+    <string name="tap_to_refresh">Tap the number to refresh</string>
+    <string name="login_hint">Sign in with your Blink account. If it stalls after the PIN, tap Continue.</string>
+    <string name="continue_btn">Continue</string>
+    <string name="finishing_sign_in">Finishing sign-in…</string>
+    <string name="sign_in_failed">Sign-in failed: %1$s</string>
+    <plurals name="avg_of_cameras">
+        <item quantity="one">%d camera</item>
+        <item quantity="other">Average of %d cameras</item>
+    </plurals>
+</resources>
