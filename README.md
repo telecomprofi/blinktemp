@@ -2,8 +2,11 @@
 
 Android app + home-screen widget showing the average temperature of your Blink Outdoor cameras
 (all homes / sync modules on one account).
+
 Also could send freezing/temp threshold alert if configured.
+
 Separately - python script to include avg temp reading to your Oh my zsh cli prompt in MacOS.
+
 
 <img src="https://github.com/telecomprofi/blinktemp/blob/main/img/BlinkTemp_01.jpg" width=30% height=30%> <img src="https://github.com/telecomprofi/blinktemp/blob/main/img/BlinkTemp_02.jpg" width=30% height=30%>
 
