@@ -8,7 +8,7 @@ Also could send freezing/temp threshold alert if configured.
 Separately - python script to include avg temp reading to your Oh my zsh cli prompt in MacOS.
 
 
-<img src="https://github.com/telecomprofi/blinktemp/blob/main/img/BlinkTemp_01.jpg" width=30% height=30%> <img src="https://github.com/telecomprofi/blinktemp/blob/main/img/BlinkTemp_02.jpg" width=30% height=30%>
+<img src="https://github.com/telecomprofi/blinktemp/blob/main/img/BlinkTemp_01.jpg" width=30% height=30%> <img src="https://github.com/telecomprofi/blinktemp/blob/main/img/BlinkTemp_02.jpg" width=30% height=30%> <img src="https://github.com/telecomprofi/blinktemp/blob/main/img/BlinkTemp_03.png">
 
 ## Install on your phone
 
@@ -71,3 +71,57 @@ update the constants at the bottom of `BlinkApi.kt` from blinkpy's `helpers/cons
 
 Some phones (Xiaomi, Huawei, Samsung "deep sleep") kill background work; if the widget stops
 updating, set the app's battery usage to *Unrestricted*.
+
+
+## Adding to .zshrc
+
+```
+
+# ── Blink temperature for the prompt ────────────────────────────────
+function blink_temp() {
+  local cache_file="/tmp/blink_temp_cache"
+  local err_file="/tmp/blink_temp_err"
+  local max_age=300
+  local script="$HOME/blinktemp/blinktemp.py"
+
+  # Prefer venv if it exists, otherwise fall back to python3 on PATH
+  local python
+  if [[ -x "$HOME/blinktemp/.venv/bin/python" ]]; then
+    python="$HOME/blinktemp/.venv/bin/python"
+  else
+    python="$(command -v python3 || command -v python)"
+  fi
+
+  local cameras="FrontDoor,GardenBack"
+
+  local mtime=0
+  if [[ -f $cache_file ]]; then
+    mtime=$(stat -f %m "$cache_file" 2>/dev/null || echo 0)
+  fi
+
+  local now
+  now=$(date +%s)
+
+  # Use cache only if it is fresh AND contains a real temperature (not N/A)
+  if (( now - mtime < max_age )) && [[ -s $cache_file ]] && [[ "$(cat $cache_file)" != "N/A" ]]; then
+    cat "$cache_file"
+    return
+  fi
+
+  # Run the script; capture stderr for debugging
+  "$python" "$script" --prompt --avg --cameras "$cameras" --celsius \
+    > "$cache_file" 2> "$err_file"
+
+  # If the script failed or produced nothing useful, don't poison the cache for long
+  if [[ ! -s $cache_file ]] || [[ "$(cat $cache_file)" == "N/A" ]]; then
+    echo "N/A" > "$cache_file"
+    # Keep the error so you can inspect it later
+    # cat /tmp/blink_temp_err
+  fi
+
+  cat "$cache_file"
+}
+# Example prompt (add this to your existing PROMPT)
+
+PROMPT='%F{cyan}$(blink_temp)%f '"$PROMPT"
+```
